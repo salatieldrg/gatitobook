@@ -32,6 +32,10 @@
         && novoUsuarioForm.get('userName')?.touched"
       mensagem="Deve ser em minusculo">
     </app-mensagem>
+    <app-mensagem *ngIf="novoUsuarioForm.get('userName')?.errors?.['usuarioExistente']
+        && novoUsuarioForm.get('userName')?.touched"
+      mensagem="Usuário já existe">
+    </app-mensagem>
   </div>
 
   <div class="form-group">
