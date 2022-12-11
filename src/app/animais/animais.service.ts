@@ -1,5 +1,5 @@
 import { environment } from './../../environments/environment';
-import { Animais } from './animal';
+import { Animais, Animal } from './animal';
 import { TokenService } from './../autenticacao/token.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -22,4 +22,12 @@ export class AnimaisService {
       headers,
     });
   }
+
+  buscarPorId(id: number): Observable<Animal>{
+    const token = this.tokenService.retornaToken();
+    const headers = new HttpHeaders().append('x-access-token', token);
+    return this.http.get<Animal>(`${API}/photos/${id}`, { headers });
+  }
+
+
 }
